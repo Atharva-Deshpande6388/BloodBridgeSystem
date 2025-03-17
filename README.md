@@ -34,5 +34,5 @@ Database: MySQL
 
 **License**
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/Atharva-Deshpande6388/BloodBridgeSystem/blob/main/LICENSE).
 

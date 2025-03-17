@@ -3,6 +3,7 @@
 The Blood Bridge System is a web-based platform designed to connect blood donors with healthcare organizations efficiently. The system allows users to register, search for blood donation centers, and connect with healthcare organizations to donate blood.
 
 **Features**
+
 User Registration: Individuals can sign up and provide their contact details and blood group.
 
 User Eligibility Form : There is secondary form for eligibility check, if user fits the criteria then they can be seen by organization to be contacted.

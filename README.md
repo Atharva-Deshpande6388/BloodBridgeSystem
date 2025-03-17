@@ -31,4 +31,7 @@ Database: MySQL
 2. Use the search feature to locate a donor or a healthcare organization.
 3. Fill up user eligibility form.
 4. Reach out to nearby registered organization or donors using the provided contact information.
-5. 
+
+**License**
+
+This project is licensed under the MIT License.

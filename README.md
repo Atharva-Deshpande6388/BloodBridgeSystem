@@ -14,9 +14,12 @@ Search Functionality: Users can search for nearby healthcare organizations, and 
 Contact Information Display: Ensures that critical contact details are available for effective communication.
 
 **Technologies Used**
-Frontend: HTML and CSS.
-Backend: PHP with XAMPP server and JavaScript.
-Database: MySQL.
+- Frontend:
+   - HTML and CSS.
+- Backend:
+   - PHP with XAMPP server and JavaScript.
+- Database:
+   - MySQL.
 
 **Installation**
 1. Clone the repository:

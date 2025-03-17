@@ -23,7 +23,7 @@ Database: MySQL
    git clone https://github.com/Atharva-Deshpande6388/BloodBridgeSystem/BloodBank
 2. Copy the contents to "C:/xampp/htdocs" or "<xampp_location>/htdocs".
 3. Start the XAMPP server and ensure Apache and MySQL services are running.
-4. Copy the contents from /BloodBank/db.sql to the console of phpmyadmin and execute.
+4. Copy the contents from [db.sql](https://github.com/Atharva-Deshpande6388/BloodBridgeSystem/blob/main/BloodBank/db.sql) to the console of phpmyadmin and execute.
 5. Access the project on browser via "http://localhost/BloodBank" in your browser.
 
 **Usage**

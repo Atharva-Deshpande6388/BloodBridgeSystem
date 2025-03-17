@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p1>Weclome $user</p1>
+
+    <form action="" method="POST">
+
+    <div>
+        <p1>Full Name : </p1>
+        <input type="text" placeholder="First Name" name="Fname" value=""> <input type="text" placeholder="Middle Name" name="Mname" value=""> <input type="text" placeholder="Last Name" name="Lname" value="">
+    </div>
+
+    <div class="form">
+        <label for="dob">Date of Birth : </label>
+        <input id="dob" type="date" name="dob" required>         
+        <button type="submit" name="calculate">Calculate Age</button>
+    </div>
+
+    <div>
+        <p1>Gender</p1>
+        <select name="gender" id="gender">
+            <option value="Male">Male</option>    
+            <option value="Female">Female</option>
+            <option vale="Transgender">Transgender</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="btype">Blood Type :</label>
+        <select name="btype" id="btype">
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+    </div>
+
+    <div>
+        <p1>Occupation : </p1>
+        <input type="text" name="Occupation" value="">
+    </div>
+
+    <div>
+        <p1>Address : </p1>
+        <input type="text" name="address" value="">
+    </div>
+
+    <div>
+        <p1>Weight : </p1>
+        <input type="float" name="weight" value="">
+    </div>
+    
+    <div>
+        <p1>Have you donated previously? </p1>
+        <select name="BDonated" id="bdon">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+        </select>
+    </div>
+
+    <div>
+        <p1>When was the last time you donated blood? </p1>
+        <input type="date" name="LDonation" value="">
+    </div>
+
+    <div>
+        <p1>In last 6 months have you had any of the following?</p1>
+        <select name="recentProcedures" id="recentProcedures" multiple>
+            <option value="tattoo">Tattoo</option>
+            <option value="ear_piercing">Ear Piercing</option>
+            <option value="dental_extraction">Dental Extraction</option>
+        </select>
+    </div>
+
+    <div>
+        <p1>Do you suffer from or have suffered any of the following diseases?</p1>
+        <select name="diseases" id="diseases" multiple>
+            <option value="Heart_Disease">Heart Disease</option>
+            <option value="Cancer">Cancer/Malignant Diseases</option>
+            <option value="Diabetes">Diabetes</option>
+            <option value="Hepatatis">Hepatatis B/C</option>
+            <option value="STD">Sexually Transmitted Diseases</option>
+            <option value="Typhoid">Typhoid(treated less than a year ago)</option>
+            <option value="Lung_Disease">Lung Disease</option>
+            <option value="TB">Tubercolosis</option>
+            <option value="Allergy">Allergic disease</option>
+            <option value="Kidney">Kidney Disease</option>
+            <option value="Epilepsy">Epilepsy (Charay Rog)</option>
+            <option value="Abnormal_Bleeding">Abnormal Bleeding Tendency</option>
+            <option value="Jaundice">Jaundice(treated less than a year ago)</option>
+            <option value="Malaria">Malaria(treated less than 6 months ago)</option>
+            <option value="Fainting">Fainting Spells</option>
+            <option value="hiv">HIV/AIDS</option>
+            <option value="Liver">Chronic Liver Diseases</option>
+            <option value="auto_immune">Autoimmune Diseases</option>
+            <option value="Thyroid">Thyroid Disorder</option>
+            <option value="BP">High Blood Pressure</option>
+            <option value="SCD">Sickle Cell Disease</option>
+        </select>
+    </div>
+
+    <div>
+        <p1>Are you taking or have any of these in the past 72 hours?</p1>
+        <select name="consumption" id="consumption" multiple>
+            <option value="AntiBiotics">AntiBiotics</option>
+            <option value="Steroids">Steroids</option>
+            <option value="Aspirin">Aspirin</option>
+            <option value="Vaccination">Vaccination</option>
+            <option value="Alcohol">Alcohol</option>
+            <option value="Dog_bite">Dog bite/Rabies (treated less than an year ago)</option>
+        </select>
+    </div>
+
+    <div>
+        <p1>Is there any history of surgery or blood transfusion in past 6 months?</p1>
+        <select name="surgery" id="surgery">
+            <option value="major">Major Surgery</option>
+            <option value="minor">Minor Surgery</option>
+            <option value="B_transfusion">Blood transfusion</option>
+        </select>
+    </div>
+
+    <div>
+        <input class="button" type="submit" name="Submit" value="Form_Submit">
+    </div>
+
+    </div>
+    </form>
+    </body>
+</html>
+
+=============================
+
+<?php
+function clean_data($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $fname = clean_data($_POST["fname"]);
+    $dob = $_POST["dob"];
+    $gender = $_POST["gender"];
+    $btype = $_POST["btype"];
+    $occ = clean_data($_POST["occupation"]);
+    $address = clean_data($_POST["address"]);
+    $weight = clean_data($_POST["weight"]);
+    $bdon = clean_data($_POST["bdon"]);
+    $ldon = clean_data($_POST["ldon"]);
+    
+    $stmt = $conn->prepare("SELECT * FROM users");
+    $stmt->execute();
+    $users = $stmt->get_result();
+}
+function Calc_Age($dob)
+{
+    $dobDate = new DateTime($dob);
+    $today = new DateTime();
+    return $today->diff($dobDate) -> y;
+}
+
+if (isset($_POST['calculate']))
+{
+    $dob = $_POST['dob'];
+}
+if (!empty($dob))
+{
+    $age = Calc_Age($dob);
+    echo "<p>$age<p>";
+}
+else
+{
+    echo "<p style='color:red;'>Please enter your Date of Birth.";
+}
+
+
+?>
